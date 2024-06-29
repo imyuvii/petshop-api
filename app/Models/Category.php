@@ -9,13 +9,17 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Category extends Model
 {
-    use HasFactory, HasUUID;
+    use HasFactory;
+    use HasUUID;
 
     protected $fillable = [
         'title',
         'slug',
     ];
 
+    /**
+     * @return HasMany<Product>
+     */
     public function products(): HasMany
     {
         return $this->hasMany(Product::class);

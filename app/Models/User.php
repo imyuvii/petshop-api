@@ -9,7 +9,9 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    use HasFactory, HasUUID, Notifiable;
+    use HasFactory;
+    use HasUUID;
+    use Notifiable;
 
     /**
      * The attributes that are mass assignable.

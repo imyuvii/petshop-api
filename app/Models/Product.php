@@ -9,7 +9,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Product extends Model
 {
-    use HasFactory, HasUUID;
+    use HasFactory;
+    use HasUUID;
 
     protected $fillable = [
         'category_id',
@@ -19,6 +20,9 @@ class Product extends Model
         'metadata',
     ];
 
+    /**
+     * @return BelongsTo<Category, Product>
+     */
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
