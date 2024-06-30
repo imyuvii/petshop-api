@@ -6,10 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateUserRequest;
 use App\Http\Requests\LoginRequest;
 use App\Services\UserService;
+use App\Traits\ApiResponse;
 use Illuminate\Http\JsonResponse;
 
 class UserController extends Controller
 {
+    use ApiResponse;
     private UserService $userService;
 
     public function __construct(UserService $userService)
@@ -22,7 +24,7 @@ class UserController extends Controller
         $validatedData = $request->validated();
         $user = $this->userService->register($validatedData);
 
-        return response()->json(['success' => true, 'data' => $user], 201);
+        return $this->success($user, 201);
     }
 
     public function loginUser(LoginRequest $request): JsonResponse
@@ -30,6 +32,6 @@ class UserController extends Controller
         $credentials = $request->validated();
         $authData = $this->userService->authenticate($credentials);
 
-        return response()->json(['success' => true, 'data' => $authData]);
+        return $this->success($authData);
     }
 }
