@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 class UserRepository implements DataRepositoryInterface
 {
     /**
-     * Get the query builder for the User model.
+     * @return Builder<User>
      */
     public function getQuery(): Builder
     {
@@ -19,7 +19,7 @@ class UserRepository implements DataRepositoryInterface
     }
 
     /**
-     * Retrieve all user records.
+     * @return Collection<int, User>
      */
     public function getAllRecords(): Collection
     {
@@ -27,23 +27,22 @@ class UserRepository implements DataRepositoryInterface
     }
 
     /**
-     * Search for user records based on given criteria.
+     * @param  array<string, mixed>  $criteria
+     * @return Collection<int, User>
      */
     public function searchRecords(array $criteria): Collection
     {
         return $this->getQuery()->where($criteria)->get();
     }
 
-    /**
-     * Find a user record by ID.
-     */
     public function findRecordById(int $id): Model
     {
         return $this->getQuery()->findOrFail($id);
     }
 
     /**
-     * Create a new user record.
+     * @param  array<string, mixed>  $attributes
+     * @return User
      */
     public function createRecord(array $attributes): Model
     {
@@ -51,16 +50,13 @@ class UserRepository implements DataRepositoryInterface
     }
 
     /**
-     * Update a user record by ID.
+     * @param  array<string, mixed>  $attributes
      */
     public function updateRecordById(array $attributes, int $id): void
     {
         $this->findRecordById($id)->update($attributes);
     }
 
-    /**
-     * Delete a user record by ID.
-     */
     public function deleteRecordById(int $id): void
     {
         $this->findRecordById($id)->delete();

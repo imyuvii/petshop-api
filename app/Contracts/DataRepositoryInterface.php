@@ -6,18 +6,41 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @template TModel of Model
+ */
 interface DataRepositoryInterface
 {
+    /**
+     * @return Builder<TModel>
+     */
     public function getQuery(): Builder;
 
+    /**
+     * @return Collection<int, TModel>
+     */
     public function getAllRecords(): Collection;
 
+    /**
+     * @param  array<string, mixed>  $criteria
+     * @return Collection<int, TModel>
+     */
     public function searchRecords(array $criteria): Collection;
 
+    /**
+     * @return TModel
+     */
     public function findRecordById(int $id): Model;
 
+    /**
+     * @param  array<string, mixed>  $attributes
+     * @return TModel
+     */
     public function createRecord(array $attributes): Model;
 
+    /**
+     * @param  array<string, mixed>  $attributes
+     */
     public function updateRecordById(array $attributes, int $id): void;
 
     public function deleteRecordById(int $id): void;
