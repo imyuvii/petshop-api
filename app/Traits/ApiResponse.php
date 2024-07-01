@@ -23,4 +23,18 @@ trait ApiResponse
 
         return response()->json($dataBody, $status);
     }
+
+    protected function failed(string $message, int $status = 400, array $errors = []): JsonResponse
+    {
+        $dataBody = [
+            'success' => false,
+            'message' => $message,
+        ];
+
+        if (! empty($errors)) {
+            $dataBody['errors'] = $errors;
+        }
+
+        return response()->json($dataBody, $status);
+    }
 }
