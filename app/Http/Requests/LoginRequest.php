@@ -4,6 +4,15 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * @OA\Schema(
+ *     schema="LoginRequest",
+ *     type="object",
+ *     required={"email", "password"},
+ *     @OA\Property(property="email", type="string", format="email", example="admin@buckhill.co.uk"),
+ *     @OA\Property(property="password", type="string", example="admin")
+ * )
+ */
 class LoginRequest extends FormRequest
 {
     /**
