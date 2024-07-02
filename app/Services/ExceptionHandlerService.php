@@ -30,7 +30,7 @@ class ExceptionHandlerService
             $e instanceof JWTException => ['status' => 401, 'message' => 'An error occurred while parsing the token.'],
             $e instanceof NotFoundHttpException => ['status' => 404, 'message' => 'The requested resource could not be found.'],
             $e instanceof ValidationException => ['status' => 422, 'message' => 'Validation errors occurred.', 'errors' => $e->errors()],
-            default => ['status' => 500, 'message' => 'Internal Server Error'],
+            default => ['status' => 500, 'message' => 'Internal Server Error', 'errors' => ['message' => $e->getMessage()]],
         };
 
         return $this->failed($response['message'], $response['status'], $response['errors'] ?? []);

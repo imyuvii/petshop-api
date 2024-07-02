@@ -7,10 +7,9 @@ use Illuminate\Http\JsonResponse;
 trait ApiResponse
 {
     /**
-     * @param  mixed  $data
      * @param  array<string, mixed>  $meta
      */
-    protected function success($data = [], int $status = 200, array $meta = []): JsonResponse
+    protected function success(mixed $data = [], int $status = 200, array $meta = []): JsonResponse
     {
         $dataBody = [
             'success' => true,
@@ -24,6 +23,9 @@ trait ApiResponse
         return response()->json($dataBody, $status);
     }
 
+    /**
+     * @param  array<int, string>  $errors
+     */
     protected function failed(string $message, int $status = 400, array $errors = []): JsonResponse
     {
         $dataBody = [
