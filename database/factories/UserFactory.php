@@ -43,6 +43,15 @@ class UserFactory extends Factory
         ]);
     }
 
+    public function frontendUser(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'is_admin' => false,
+            'email' => 'frontend@buckhill.co.uk',
+            'password' => Hash::make('userpassword'),
+        ]);
+    }
+
     public function unverifiedUser(): static
     {
         return $this->state(fn (array $attributes) => [

@@ -9,8 +9,8 @@ use Illuminate\Foundation\Http\FormRequest;
  *     schema="LoginRequest",
  *     type="object",
  *     required={"email", "password"},
- *     @OA\Property(property="email", type="string", format="email", example="admin@buckhill.co.uk"),
- *     @OA\Property(property="password", type="string", example="admin")
+ *     @OA\Property(property="email", type="string", format="email", example="user@buckhill.co.uk"),
+ *     @OA\Property(property="password", type="string", example="userpassword")
  * )
  */
 class LoginRequest extends FormRequest
