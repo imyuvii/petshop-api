@@ -24,7 +24,7 @@ class ExceptionHandlerService
     public function renderJsonResponse(\Throwable $e): JsonResponse
     {
         $response = match (true) {
-            $e instanceof AuthenticationException => ['status' => 401, 'message' => 'Unauthenticated.'],
+            $e instanceof AuthenticationException => ['status' => 401, 'message' => 'Invalid credentials.'],
             $e instanceof TokenInvalidException => ['status' => 401, 'message' => 'The provided token is invalid.'],
             $e instanceof TokenExpiredException => ['status' => 401, 'message' => 'The token has expired.'],
             $e instanceof JWTException => ['status' => 401, 'message' => 'An error occurred while parsing the token.'],
