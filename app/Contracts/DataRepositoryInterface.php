@@ -5,6 +5,7 @@ namespace App\Contracts;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 /**
  * @template TModel of Model
@@ -23,9 +24,9 @@ interface DataRepositoryInterface
 
     /**
      * @param  array<string, mixed>  $criteria
-     * @return Collection<int, TModel>
+     * @return LengthAwarePaginator<TModel>
      */
-    public function searchRecords(array $criteria): Collection;
+    public function searchRecords(array $criteria, int $perPage): LengthAwarePaginator;
 
     /**
      * @return TModel
