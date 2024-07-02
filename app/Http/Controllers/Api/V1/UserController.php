@@ -27,7 +27,10 @@ class UserController extends Controller
      *     summary="Register a new user",
      *     @OA\RequestBody(
      *         required=true,
-     *         @OA\JsonContent(ref="#/components/schemas/CreateUserRequest")
+     *         @OA\MediaType(
+     *              mediaType="application/x-www-form-urlencoded",
+     *              @OA\Schema(ref="#/components/schemas/CreateUserRequest")
+     *         )
      *     ),
      *     @OA\Response(
      *         response=201,
@@ -50,23 +53,17 @@ class UserController extends Controller
      * @OA\Post(
      *     path="/api/v1/user/login",
      *     tags={"User"},
-     *     summary="Login a user",
+     *     summary="Login user",
      *     @OA\RequestBody(
      *         required=true,
-     *         @OA\JsonContent(ref="#/components/schemas/LoginRequest")
-     *     ),
-     *     @OA\Response(
-     *         response=200,
-     *         description="User logged in successfully",
-     *         @OA\JsonContent(
-     *             type="object",
-     *             @OA\Property(property="access_token", type="string"),
-     *             @OA\Property(property="token_type", type="string"),
-     *             @OA\Property(property="expires_in", type="integer"),
-     *             @OA\Property(property="user", ref="#/components/schemas/User")
+     *         @OA\MediaType(
+     *             mediaType="application/x-www-form-urlencoded",
+     *             @OA\Schema(ref="#/components/schemas/LoginRequest")
      *         )
      *     ),
+     *     @OA\Response(response="200", description="Successful login"),
      *     @OA\Response(response=401, description="Unauthorized"),
+     *     @OA\Response(response=422, description="Validation Error"),
      *     @OA\Response(response=500, description="Server Error")
      * )
      */
@@ -76,5 +73,22 @@ class UserController extends Controller
         $authData = $this->userService->authenticate($credentials);
 
         return $this->success($authData);
+    }
+
+    /**
+     * @OA\Get(
+     *     path="/api/v1/user/logout",
+     *     tags={"User"},
+     *     summary="Logout user",
+     *     security={{"bearerAuth":{}}},
+     *     @OA\Response(response=401, description="Unauthorized"),
+     *     @OA\Response(response=422, description="Validation Error"),
+     *     @OA\Response(response=500, description="Server Error")
+     * )
+     */
+    public function logout(): JsonResponse
+    {
+        $this->userService->logout();
+        return $this->success([], 204);
     }
 }
