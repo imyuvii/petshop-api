@@ -34,6 +34,11 @@ interface DataRepositoryInterface
     public function findRecordById(int $id): Model;
 
     /**
+     * @return TModel
+     */
+    public function findRecordByUuid(string $id): Model;
+
+    /**
      * @param  array<string, mixed>  $attributes
      * @return TModel
      */
