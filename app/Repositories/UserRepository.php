@@ -44,6 +44,11 @@ class UserRepository implements DataRepositoryInterface
         return $this->getQuery()->findOrFail($id);
     }
 
+    public function findRecordByUuid(string $uuid): Model
+    {
+        return $this->getQuery()->where('uuid', $uuid)->firstOrFail();
+    }
+
     /**
      * @param  array<string, mixed>  $attributes
      * @return User

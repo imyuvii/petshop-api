@@ -68,6 +68,11 @@ class ProductRepository implements DataRepositoryInterface
         return $this->getQuery()->with('category')->findOrFail($id);
     }
 
+    public function findRecordByUuid(string $uuid): Model
+    {
+        return $this->getQuery()->with('category')->where('uuid', $uuid)->firstOrFail();
+    }
+
     /**
      * @param  array<string, mixed>  $attributes
      * @return Product
