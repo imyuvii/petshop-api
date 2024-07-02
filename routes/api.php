@@ -14,6 +14,7 @@ Route::group(['namespace' => 'Api', 'prefix' => 'v1'], function (): void {
         });
     });
     Route::group(['middleware' => 'jwt.auth'], function (): void {
-        Route::get('products', [ProductController::class, 'index'])->name('products');
+        Route::get('products/', [ProductController::class, 'index'])->name('products');
+        Route::get('product/{uuid}', [ProductController::class, 'show'])->name('product.details');
     });
 });

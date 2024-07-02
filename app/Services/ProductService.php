@@ -17,11 +17,15 @@ class ProductService
 
     /**
      * @param  array<string, mixed>  $filters
-     * @param  int  $perPage
      * @return LengthAwarePaginator<Product>
      */
     public function getAllProducts(array $filters, int $perPage = 15): LengthAwarePaginator
     {
         return $this->productRepository->searchRecords($filters, $perPage);
+    }
+
+    public function getProductByUuid(string $uuid): Product
+    {
+        return $this->productRepository->findRecordByUuid($uuid);
     }
 }

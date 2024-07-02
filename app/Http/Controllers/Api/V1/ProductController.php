@@ -7,6 +7,7 @@ use App\Http\Requests\ProductFilterRequest;
 use App\Services\ProductService;
 use App\Traits\ApiResponse;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
@@ -85,5 +86,28 @@ class ProductController extends Controller
         $products = $this->productService->getAllProducts($filters);
 
         return response()->json($products);
+    }
+
+    /**
+     * @OA\Get(
+     *     path="/api/v1/product/{uuid}",
+     *     tags={"Products"},
+     *     summary="Get a product by Uuid",
+     *     security={{"bearerAuth":{}}},
+     *     @OA\Parameter(
+     *         name="uuid",
+     *         in="query",
+     *         required=false,
+     *         @OA\Schema(type="string"),
+     *         description="Product UUID"
+     *     ),
+     *     @OA\Response(response="200", description="A product details"),
+     *     @OA\Response(response=500, description="Server Error")
+     * )
+     */
+    public function show(Request $request): JsonResponse
+    {
+        $product = $this->productService->getProductByUuid($request->uuid);
+        return $this->success($product);
     }
 }
