@@ -49,4 +49,12 @@ class UserService
             'user' => $this->userRepository->findRecordById((int) $user->id),
         ];
     }
+
+    /**
+     * Log out the currently authenticated user.
+     */
+    public function logout(): void
+    {
+        auth()->logout();
+    }
 }

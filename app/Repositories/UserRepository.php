@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 /**
  * @implements DataRepositoryInterface<User>
@@ -31,11 +32,11 @@ class UserRepository implements DataRepositoryInterface
 
     /**
      * @param  array<string, mixed>  $criteria
-     * @return Collection<int, User>
+     * @return LengthAwarePaginator<User>
      */
-    public function searchRecords(array $criteria): Collection
+    public function searchRecords(array $criteria, int $perPage = 15): LengthAwarePaginator
     {
-        return $this->getQuery()->where($criteria)->get();
+        return $this->getQuery()->where($criteria)->paginate($perPage);
     }
 
     public function findRecordById(int $id): Model
