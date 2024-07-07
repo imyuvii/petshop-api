@@ -16,22 +16,22 @@ cd petshop-api
 ```
 ### Run the docker containers
 ```bash
-docker compose up -d # -d to run it in the background
+docker-compose up -d # -d to run it in the background
 ```
 ### Install dependencies and generate keys
 ```bash
-docker compose exec app cp .env.example .env
-docker compose exec app composer install
-docker compose exec app php artisan key:generate
-docker compose exec app php artisan jwt:secret
+docker-compose exec app cp .env.example .env
+docker-compose exec app composer install
+docker-compose exec app php artisan key:generate
+docker-compose exec app php artisan jwt:secret
 ```
 ### Migrate and seed the database
 ```
-docker compose exec app php artisan migrate:fresh --seed
+docker-compose exec app php artisan migrate:fresh --seed
 ```
 ### Generate swagger documentation
 ```
-docker compose exec app php artisan l5-swagger:generate
+docker-compose exec app php artisan l5-swagger:generate
 ```
 ## Swagger docs
 Hit the url: http://127.0.0.1:8080/api/documentation
@@ -43,14 +43,14 @@ Password: userpassword
 ```
 ## Testing
 ```bash
-docker compose exec app php artisan test
+docker-compose exec app php artisan test
 ```
 ## Code formatting
 ```bash
-docker compose exec app docker-compose exec app composer format
+docker-compose exec app docker-compose exec app composer format
 ```
 
 ## Running PHPStan 
 ```bash
-docker compose exec app composer analyse
+docker-compose exec app composer analyse
 ```
