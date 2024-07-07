@@ -1,0 +1,17 @@
+{
+    "name": "your-vendor/bacs-package",
+    "autoload": {
+        "psr-4": {
+            "YuvrajJhala\\BacsPackage\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "YuvrajJhala\\BacsPackage\\Tests\\": "tests/"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^11.0"
+    },
+    "require": {}
+}
