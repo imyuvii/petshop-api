@@ -13,8 +13,6 @@ Route::group(['namespace' => 'Api', 'prefix' => 'v1'], function (): void {
             Route::get('logout', [UserController::class, 'logout'])->name('logout');
         });
     });
-    Route::group(['middleware' => 'jwt.auth'], function (): void {
-        Route::get('products/', [ProductController::class, 'index'])->name('products');
-        Route::get('product/{uuid}', [ProductController::class, 'show'])->name('product.details');
-    });
+    Route::get('products/', [ProductController::class, 'index'])->name('products');
+    Route::get('product/{uuid}', [ProductController::class, 'show'])->name('product.details');
 });
