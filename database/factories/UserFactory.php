@@ -47,7 +47,7 @@ class UserFactory extends Factory
     {
         return $this->state(fn (array $attributes) => [
             'is_admin' => false,
-            'email' => 'frontend@buckhill.co.uk',
+            'email' => 'user@buckhill.co.uk',
             'password' => Hash::make('userpassword'),
         ]);
     }
