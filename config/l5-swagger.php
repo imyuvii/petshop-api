@@ -17,8 +17,8 @@ return [
                 'format_to_use_for_docs' => env('L5_FORMAT_TO_USE_FOR_DOCS', 'json'),
                 'annotations' => [
                     base_path('app'),
+                    base_path('packages/YuvrajJhala/BacsPackage/src'),
                 ],
-
             ],
         ],
     ],
@@ -41,6 +41,9 @@ return [
             'base' => env('L5_SWAGGER_BASE_PATH', null),
             'swagger_ui_assets_path' => env('L5_SWAGGER_UI_ASSETS_PATH', 'vendor/swagger-api/swagger-ui/dist/'),
             'excludes' => [],
+            'annotations' => [
+                base_path('packages/YuvrajJhala/BacsPackage/src'),
+            ],
         ],
 
         'scanOptions' => [

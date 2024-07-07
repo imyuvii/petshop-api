@@ -11,10 +11,14 @@
         <testsuite name="Feature">
             <directory>tests/Feature</directory>
         </testsuite>
+        <testsuite name="BacsPackage">
+            <directory>packages/YuvrajJhala/BacsPackage/tests</directory>
+        </testsuite>
     </testsuites>
     <source>
         <include>
             <directory>app</directory>
+            <directory>packages/YuvrajJhala/BacsPackage/src</directory>
         </include>
     </source>
     <php>
