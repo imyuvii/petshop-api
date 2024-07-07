@@ -18,7 +18,7 @@ use Illuminate\Validation\Rule;
  *     @OA\Property(property="avatar", type="string", nullable=true, example="uuid"),
  *     @OA\Property(property="address", type="string", example="123 Main St"),
  *     @OA\Property(property="phone_number", type="string", example="+1234567890"),
- *     @OA\Property(property="is_marketing", type="int", example=0)
+ *     @OA\Property(property="is_marketing", type="integer", enum={0, 1}, example=0)
  * )
  */
 class CreateUserRequest extends FormRequest
