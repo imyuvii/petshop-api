@@ -25,7 +25,7 @@ class ProductFilterRequest extends FormRequest
             'sortBy' => 'sometimes|string',
             'desc' => 'sometimes|boolean',
             'category' => 'sometimes|string',
-            'price' => 'sometimes|integer',
+            'price' => 'sometimes|numeric',
             'title' => 'sometimes|string',
         ];
     }

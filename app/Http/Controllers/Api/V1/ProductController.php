@@ -65,7 +65,7 @@ class ProductController extends Controller
      *         name="price",
      *         in="query",
      *         required=false,
-     *         @OA\Schema(type="integer"),
+     *         @OA\Schema(type="float"),
      *         description="Price to filter by"
      *     ),
      *     @OA\Parameter(
