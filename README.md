@@ -47,7 +47,7 @@ docker-compose exec app php artisan test
 ```
 ## Code formatting
 ```bash
-docker-compose exec app docker-compose exec app composer format
+docker-compose exec app composer format
 ```
 
 ## Running PHPStan 
